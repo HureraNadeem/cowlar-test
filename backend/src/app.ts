@@ -5,11 +5,13 @@ import { ICustomRequest, ICustomError } from './types/express';
 import { AppError } from './utils/app-error';
 
 // Controllers
-const errorController = require('./controllers/error/index')
+const errorController = require('./controllers/error/index');
+const AuthRoutes = require('./routes/auth/index')
 
 // Libraries imports
 import morgan from 'morgan';
 import cors from 'cors';
+
 
 const app = express();
 app.use(morgan('dev'));
@@ -22,6 +24,9 @@ app.use((req: ICustomRequest, res: Response, next: NextFunction) => {
 	req.requestTime = new Date().toISOString();
 	next();
 });
+
+// API routes
+app.use('/api/v1/auth', AuthRoutes);
 
 app.get('/', (req: Request, res: Response) => {
 	res.send('Hello from the server!');

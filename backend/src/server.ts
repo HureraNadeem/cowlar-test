@@ -6,9 +6,6 @@ const app = require('./app');
 
 import establishDBConnection from './config/db';
 
-console.log(process.env.MONGODB_CONNECTION_STRING_URL);
-console.log(process.env.MONGODB_URL_USERNAME);
-console.log(process.env.MONGODB_URL_PASSWORD);
 const DB = process.env.MONGODB_CONNECTION_STRING_URL?.replace(
 	'<USERNAME>',
 	process.env.MONGODB_URL_USERNAME ?? ''

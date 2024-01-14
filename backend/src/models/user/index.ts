@@ -5,6 +5,9 @@ import validator from 'validator';
 interface IUser extends Document {
 	name: string;
 	password: string;
+	email: string;
+	phoneNumber: string;
+	matchPassword(pass_: string): Promise<boolean>;
 }
 
 const userSchema = new mongoose.Schema({
@@ -30,7 +33,7 @@ const userSchema = new mongoose.Schema({
 		unique: true,
 		validate: [validator.isEmail, 'Please provide a valid email']
 	},
-	phone: {
+	phoneNumber: {
 		type: String,
 		required: [true, 'Please enter your phone number'],
 		validate: {
@@ -60,6 +63,6 @@ userSchema.methods.matchPassword = async function (pass_: string) {
 	return match;
 };
 
-const userModel: Model<IUser> = mongoose.model<IUser>('user', userSchema);
+const UserModel: Model<IUser> = mongoose.model<IUser>('user', userSchema);
 
-export default userModel;
+export default UserModel;
