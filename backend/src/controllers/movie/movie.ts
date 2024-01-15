@@ -47,10 +47,10 @@ const deleteMovie = catchAsync(async (req: ICustomRequest, res: ICustomResponse,
     if (!userId) return next(new AppError('Invalid access token', 401))
 
     const movieId = req.params.id
-    
-    const deletedCount = await deleteMovieService(userId, movieId);
 
-    if (deletedCount === 0) {
+    const deletedMovie = await deleteMovieService(userId, movieId);
+
+    if (!deletedMovie) {
         return res.status(404).json({
             message: "fail",
             data: "No such movie found for the user"
