@@ -7,17 +7,41 @@ import {
     faFilm,
     faGlobe,
     faShareNodes,
+    faTrash,
     faVideo,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faCalendar,
     faClock,
     faClosedCaptioning,
+    faPenToSquare,
+    faUser
 } from '@fortawesome/free-regular-svg-icons';
+import Modal from '../../components/modals/review-modal';
+import ReviewCard from '../../components/review-card';
 
 function MovieDetails() {
     const { id } = useParams();
     const isFavourite = false;
+
+    const [isModalOpen, setModalOpen] = React.useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+
+
+
+
+
+
+
+
     console.log(id);
     return (
         <>
@@ -148,8 +172,104 @@ function MovieDetails() {
                             ></iframe>
                         </div>
                     </div>
+
+                    <section className="dark:bg-gray-900 py-8 lg:py-16 antialiased">
+                        <div className="max-w-2xl mx-auto px-4">
+                            <div className='w-full flex flex-row justify-between'>
+                                <div className="flex justify-between items-center mb-6">
+                                    <h2 className="text-lg lg:text-2xl font-bolddark:text-white">Discussion {`(${20})`}</h2>
+                                </div>
+                                <form className="mb-6 self-end">
+                                    <button
+                                        onClick={openModal}
+                                        className="inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-white bg-primaryRed rounded-lg"                                    >
+                                        Write a review!
+                                    </button>
+                                    {/* <div className="py-2 px-4 mb-4 bg-[#292929] text-[#e7e7e7] rounded-lg rounded-t-lg border border-gray-700 dark:bg-gray-800 dark:border-gray-700">
+                                    <label htmlFor="comment" className="sr-only">Your comment</label>
+                                    <textarea id="comment" rows={6}
+                                        className="px-0 w-full text-sm bg-[#292929] text-[#e7e7e7] border-0 focus:ring-0 focus:outline-none"
+                                        placeholder="Write a comment..." required>
+
+                                    </textarea>
+                                </div> */}
+                                    {/* <button type="submit"
+                                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-primaryRed rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                    Post comment
+                                </button> */}
+                                </form>
+                            </div>
+
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-lg lg:text-2xl font-bolddark:text-white">Your Review</h2>
+                            </div>
+
+                            {/* <article className="p-6 text-base bg-[#292929] rounded-lg dark:bg-gray-900 my-3">
+                                <footer className="flex justify-between items-center mb-2">
+                                    <div className="flex items-center">
+                                        <p className="inline-flex items-center mr-3 text-sm text-[#e7e7e7] dark:text-white font-semibold">
+                                            <div className='flex items-center'>
+                                                <FontAwesomeIcon
+                                                    icon={faUser}
+                                                    className="mr-2 w-6 h-6 rounded-full bg-[#f6f6f6] p-2"
+                                                    height={16}
+                                                    color='black'
+                                                /> Michael Gough
+                                            </div>
+                                        </p>
+                                        <p className="text-sm text-[#d1d1d1] dark:text-gray-400"><time dateTime="2022-02-08"
+                                            title="February 8th, 2022">Feb. 8, 2022</time></p>
+                                    </div>
+                                    <div className='flex justify-between gap-4'>
+                                        <FontAwesomeIcon icon={faPenToSquare} className='h-[20px] cursor-pointer' color='white'/>
+                                        <FontAwesomeIcon icon={faTrash} className='h-[20px] cursor-pointer' color='red'/>
+
+                                    </div>
+                                </footer>
+                                <p className="text-[#d1d1d1] dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, temporibus?</p>
+                            </article> */}
+
+                            <ReviewCard own={true}/>
+
+                            <div className="flex justify-between items-center mb-4">
+                                <h2 className="text-lg lg:text-2xl font-bolddark:text-white">Others Reviews</h2>
+                            </div>
+
+                            <ReviewCard own={false}/>
+                            <ReviewCard own={false}/>
+                            <ReviewCard own={false}/>
+                            <ReviewCard own={false}/>
+
+
+                            {/* <article className="p-6 text-base bg-[#292929] rounded-lg dark:bg-gray-900 my-3">
+                                <footer className="flex justify-between items-center mb-2">
+                                    <div className="flex items-center">
+                                        <p className="inline-flex items-center mr-3 text-sm text-[#e7e7e7] dark:text-white font-semibold">
+                                            <div className='flex items-center'>
+                                                <FontAwesomeIcon
+                                                    icon={faUser}
+                                                    className="mr-2 w-6 h-6 rounded-full bg-[#f6f6f6] p-2"
+                                                    height={16}
+                                                    color='black'
+                                                /> {"Michael Gough"}
+                                            </div>
+                                        </p>
+                                        <p className="text-sm text-[#d1d1d1] dark:text-gray-400"><time dateTime="2022-02-08"
+                                            title="February 8th, 2022">Feb. 8, 2022</time></p>
+                                    </div>
+                                </footer>
+                                <p className="text-[#d1d1d1] dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, temporibus?</p>
+                            </article> */}
+
+
+
+
+                        </div>
+                    </section>
                 </ContainerLayout>
             </RootLayout>
+
+            <Modal isOpen={isModalOpen} onClose={closeModal} />
         </>
     );
 }

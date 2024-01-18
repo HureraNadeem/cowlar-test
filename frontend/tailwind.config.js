@@ -6,6 +6,7 @@ export default {
       colors: {
         primaryRed: '#eb0914',
         secondaryRed: '#c11119',
+        backgroundBlack: 'rgba(0,0,0,.93)'
        
       },
     },
