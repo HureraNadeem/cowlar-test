@@ -14,9 +14,9 @@ export const MovieCard: FC<MovieCardProps> = () => {
     const staticTime = '2h 30min';
 
     return (
-        <div className='select-none group' style={{width: '230px', height:"345px"}}>
+        <div className='select-none group' style={{ width: '230px', height: "345px" }}>
             <div className='relative rounded-lg overflow-hidden'>
-                <img src={staticSrc} alt={staticName} className='aspect-[2/3] w-[100%] h-[100%]'/>
+                <img src={staticSrc} alt={staticName} className='aspect-[2/3] w-[100%] h-[100%]' />
                 <a
                     href={`#`}
                     className='absolute inset-0 z-10 md:hidden'

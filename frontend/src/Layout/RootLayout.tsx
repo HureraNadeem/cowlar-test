@@ -1,16 +1,19 @@
-import { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react'
+import { Navbar } from '../components/navbar'
+import { Footer } from '../components/footer'
 
-type Props = {
-    children: ReactNode;
-};
+type RootLayoutProps = {
+    children: ReactNode
+}
 
-const RootLayout: FC<Props> = ({ children }) => {
+const RootLayout: FC<RootLayoutProps> = ({ children }) => {
     return (
-        <div className="relative min-h-screen">
-            <div className="absolute inset-0 bg-bridge bg-cover bg-fixed brightness-50"></div>
-            <div className="relative">{children}</div>
-        </div>
-    );
-};
+        <>
+            <Navbar />
+            {children}
+            <Footer />
+        </>
+    )
+}
 
-export default RootLayout;
+export default RootLayout
