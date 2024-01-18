@@ -4,9 +4,23 @@ import { MovieCard } from "../../components/movie-card"
 import Navbar from "../../components/navbar/navbar"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import RootLayout from "../../Layout/RootLayout"
+import React from "react"
+import MovieModal from "../../components/modals/movie-modal"
 
 
 function Home() {
+
+    const [isModalOpen, setModalOpen] = React.useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    console.log(isModalOpen);
     return (
         <>
             <RootLayout>
@@ -15,7 +29,7 @@ function Home() {
                         <div className="flex justify-between">
                             <h2 className="capitalize text-2xl font-bold md:text-3xl">All Movies</h2>
                             {/* <h2 className="text-[30px] padding-5">All Movies</h2> */}
-                            <button type="button" className="text-white bg-primaryRed hover:bg-secondaryRed font-medium rounded-lg text-sm px-4 py-2 text-center"><FontAwesomeIcon icon={faPlus} className="pr-1" />Add Movie</button>
+                            <button type="button" className="text-white bg-primaryRed hover:bg-secondaryRed font-medium rounded-lg text-sm px-4 py-2 text-center"onClick={openModal} ><FontAwesomeIcon icon={faPlus} className="pr-1"/>Add Movie</button>
                         </div>
 
 
@@ -43,6 +57,7 @@ function Home() {
                 </ContainerLayout>
             </RootLayout>
 
+            <MovieModal isOpen={isModalOpen} onClose={closeModal} />
         </>
 
 
