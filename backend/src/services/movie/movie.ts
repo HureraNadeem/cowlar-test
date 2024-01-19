@@ -87,4 +87,9 @@ const getAllMoviesRankedByRating = async () => {
     return moviesWithAvgRating;
 }
 
+const searchMovieByName = async (id: string) => {
+    const movies = await movieModel.findById(id).select("-createdBy");
+    return movies;
+}
+
 export { getAllMovies, getMovieById, createMovie, deleteMovie, getAllMoviesRankedByRating }
