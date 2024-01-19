@@ -7,6 +7,7 @@ import RootLayout from '../../Layout/RootLayout';
 import React from 'react';
 import MovieModal from '../../components/modals/movie-modal';
 import { useForm } from 'react-hook-form';
+import { Toaster } from 'react-hot-toast';
 
 function Home() {
     const { register, handleSubmit } = useForm();
@@ -28,6 +29,7 @@ function Home() {
     console.log(isModalOpen);
     return (
         <>
+            <div><Toaster /></div>
             <RootLayout>
                 <ContainerLayout>
                     <div className='flex flex-col'>
