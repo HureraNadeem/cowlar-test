@@ -8,25 +8,14 @@ import { NextFunction } from "express";
 
 
 const getAllMovies = catchAsync(async (req: ICustomRequest, res: ICustomResponse) => {
-    const isRakingRequired = req.query.sorted;
-    const searchFilter = req.query.name;
 
-    console.log("isRakingRequired", isRakingRequired);
+    const searchFilter = req.query.name as string || "";
 
-    const allMovies = isRakingRequired ? await getAllMoviesRankedByRating() : await getAllMoviesService();
-
-    let movies = [];
-    if (searchFilter) {
-        for (let movie of allMovies) {
-            if (movie?.name.toString().toLowerCase().includes(searchFilter?.toString().toLowerCase())) {
-                movies.push(movie);
-            }
-        }
-    }
+    const allMovies = await getAllMoviesRankedByRating(searchFilter)
 
     return res.status(200).json({
         message: "success",
-        data: searchFilter ? movies : allMovies
+        data: allMovies
     });
 });
 

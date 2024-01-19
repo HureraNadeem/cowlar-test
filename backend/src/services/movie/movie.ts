@@ -21,8 +21,20 @@ const deleteMovie = async (userId: string, movieId: string) => {
     return movie;
 }
 
-const getAllMoviesRankedByRating = async () => {
+const getAllMoviesRankedByRating = async (searchFilter: string) => {
+
     const moviesWithAvgRating = await movieModel.aggregate([
+        {
+            $match: {
+                $expr: {
+                    $cond: {
+                        if: !!searchFilter,
+                        then: { $regexMatch: { input: '$name', regex: searchFilter.trim(), options: 'i' } },
+                        else: true, // Match everything when applyMatch is false
+                    },
+                },
+            },
+        },
         {
             $lookup: {
                 from: 'review',
