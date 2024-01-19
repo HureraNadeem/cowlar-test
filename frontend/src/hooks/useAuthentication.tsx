@@ -21,7 +21,7 @@ const useAuthVerification = () => {
             if (token) {
                 const user = await verifyUser(token);
                 if (user) {
-                    updateUser(user);
+                    updateUser({...user, token: token});
                     setIsLoggedIn(true);
                 }
                 else {

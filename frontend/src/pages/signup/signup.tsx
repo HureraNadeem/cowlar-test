@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Loading from '../../components/loading';
 import BasicButton from '../../components/button/basic-button';
 import { signUpUser } from '../../api/user';
 import { Toaster } from 'react-hot-toast';
+import { UserContext } from '../../context';
 
 function SignUp() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const [submitLoading, setSubmitLoading] = useState<boolean>(false);
+
+    const { setIsLoggedIn, updateUser } = useContext(UserContext);
 
     const navigate = useNavigate();
 
@@ -19,7 +22,9 @@ function SignUp() {
             const user = await signUpUser(data.email, data.password, data.fullName, data.phoneNumber);
             console.log(user);
             if (user) {
+                updateUser({...user.user, token: user.token });
                 localStorage.setItem('COWLAR_TOKEN', user.token);
+                setIsLoggedIn(true);
                 setTimeout(() => { //delay for the toast to be readable
                     navigate('/');
                 }, 750);

@@ -6,7 +6,6 @@ import { loginUser } from '../../api/user';
 import toast, { Toaster } from 'react-hot-toast';
 import { UserContext } from '../../context';
 
-
 function LogIn() {
     const [submitLoading, setSubmitLoading] = useState<boolean>(false);
 
@@ -21,9 +20,9 @@ function LogIn() {
             const user = await loginUser(data.email, data.password);
             console.log(user);
             if (user) {
+                updateUser({...user.user, token: user.token });
                 localStorage.setItem('COWLAR_TOKEN', user.token);
                 setIsLoggedIn(true);
-                updateUser(user.user);
                 setTimeout(() => { //delay for the toast to be readable
                     navigate('/');
                 }, 750);
