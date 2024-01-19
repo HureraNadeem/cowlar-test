@@ -13,7 +13,7 @@ export const getAllMovies = async (searchFilter: string) => {
         }
     } catch (error: any) {
         console.log('Movies fetching error', error);
-        toast.error(error?.response?.data?.message || 'oops, seem like server is down! Try again later');
+        // toast.error(error?.response?.data?.message || 'oops, seem like server is down! Try again later');
     }
     return null;
 };
