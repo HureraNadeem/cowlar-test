@@ -35,19 +35,22 @@ const useAuthVerification = () => {
                 toast("Hi, you're in guest mode. Log In!", {
                     icon: '👏', duration: 2000
                 });
+                console.log("here");
             }
+            console.log("here2");
+
             setPageLoading(false);
         };
         verifyUser_();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const logoutHandler = () => {
-        localStorage.removeItem('COWLAR_TOKEN');
-        navigate('/login');
-    };
+    // const logoutHandler = () => {
+    //     localStorage.removeItem('COWLAR_TOKEN');
+    //     navigate('/login');
+    // };
 
-    return { pageLoading, logoutHandler };
+    return { pageLoading };
 };
 
 export default useAuthVerification;

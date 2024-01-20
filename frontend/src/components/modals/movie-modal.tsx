@@ -52,13 +52,14 @@ const MovieModal: FC<Props> = ({ isOpen, onClose, onSubmit }) => {
 
                     setSubmitLoading(false);
                     onClose();
-                    onSubmit({ search: "" })
-                }
-                else {
+                    onSubmit({ search: "" }) //makes the movie page rerender and refetch movies
                     toast.success("Movie has been added!")
 
                 }
-                // console.log(newMovie);
+                else {
+                    toast.error("There was unexpected error, try again!")
+                    onClose();
+                }
             }
             else {
                 toast("Wont work! You need to login first!", { icon: "🙂" })
