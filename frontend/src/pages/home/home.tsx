@@ -16,6 +16,7 @@ function Home() {
     const { register, handleSubmit } = useForm();
 
     const { isLoggedIn, user } = useContext(UserContext);
+    // const {shouldRefetchMovies, setShouldRe}
 
     const { pageLoading } = useAuthVerification();
 
@@ -27,14 +28,14 @@ function Home() {
     const [movies, setMovies] = React.useState([]);
 
     const openModal = () => {
-        setModalOpen(true);
+        isLoggedIn ? setModalOpen(true) : toast("Wont work! You need to login first!", { icon: "🙂" })
     };
 
     const closeModal = () => {
         setModalOpen(false);
     };
 
-    const onSubmit = async (data: any) => {
+    const reFetchMovies = async (data: any) => {
         const movieId = data.search;
         try {
             setIsPageLoading(true);
@@ -48,7 +49,6 @@ function Home() {
 
     React.useEffect(() => {
         (async () => {
-
             try {
                 setIsPageLoading(true);
                 const { data } = await getAllMovies("") as any;
@@ -110,7 +110,7 @@ function Home() {
                             </button>
                         </div>
                         <div className='py-5 flex items-end justify-center'>
-                            <form onSubmit={handleSubmit(onSubmit)}>
+                            <form onSubmit={handleSubmit(reFetchMovies)}>
                                 <label
                                     htmlFor='default-search'
                                     className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'
@@ -175,7 +175,7 @@ function Home() {
                 </ContainerLayout>
             </RootLayout>
 
-            <MovieModal isOpen={isModalOpen} onClose={closeModal} />
+            <MovieModal isOpen={isModalOpen} onClose={closeModal} onSubmit={reFetchMovies} />
         </>
     );
 }
