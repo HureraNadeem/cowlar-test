@@ -19,7 +19,8 @@ function Navbar() {
                     {
                         isLoggedIn ? (
                             <>
-                                <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                                <div className="flex items-center gap-5 md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                                    <p className='font-medium text-white'>Hello, {user?.name || "user"}</p>
                                     <button onClick={() => logoutHandler()} type="button" className="text-white bg-primaryRed hover:bg-secondaryRed font-medium rounded-lg text-sm px-4 py-2 text-center">Log out</button>
                                 </div>
                             </>

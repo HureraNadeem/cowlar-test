@@ -240,7 +240,7 @@ function MovieDetails() {
                 onClose={closeModal}
                 movieId={id || ''}
                 setReFetchReview={setReFetchReview}
-                existingData={isLoggedIn ? (ownReviews.length === 0 ? undefined : ownReviews[0]) : undefined}
+                existingData={isLoggedIn && !!ownReviews ? (ownReviews?.length === 0 ? undefined : ownReviews[0]) : undefined}
             />
         </>
     );
