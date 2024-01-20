@@ -137,7 +137,7 @@ function MovieDetails() {
                 />
 
                 <ContainerLayout>
-                    <div className='mx-auto max-w-7xl flex flex-col'>
+                    <div className='mx-auto max-w-7xl flex flex-col mb-28'>
                         <div className='text-sm px-5'>
                             <ul key={'server.server_name'}>
                                 <p className='text-[24px] font-bold mb-4 mt-8'>Watch Online</p>

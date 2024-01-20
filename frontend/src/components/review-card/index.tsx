@@ -51,7 +51,7 @@ const ReviewCard: FC<IReviewProps> = ({ own = false, reviewBody, setReFetchRevie
     return (
         <>
             <article className="p-6 text-base bg-[#292929] rounded-lg dark:bg-gray-900 my-3">
-                <footer className="flex justify-between items-center mb-2">
+                <footer className="flex justify-between items-center mb-2 flex-wrap gap-3 sm:gap-0">
                     <div className="flex items-center">
                         <p className="inline-flex items-center mr-3 text-sm text-[#e7e7e7] dark:text-white font-semibold">
                             <div className='flex items-center'>
