@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { verifyToken } from '../utils/api';
 import { UserContext } from '../context';
 import { verifyUser } from '../api/user';
 import toast from 'react-hot-toast';
@@ -9,7 +7,6 @@ import toast from 'react-hot-toast';
 // and get it verified by the backend and update the context
 
 const useAuthVerification = () => {
-    const navigate = useNavigate();
     const [pageLoading, setPageLoading] = useState(true);
     const { setIsLoggedIn, updateUser } = useContext(UserContext);
 
@@ -44,11 +41,6 @@ const useAuthVerification = () => {
         verifyUser_();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    // const logoutHandler = () => {
-    //     localStorage.removeItem('COWLAR_TOKEN');
-    //     navigate('/login');
-    // };
 
     return { pageLoading };
 };

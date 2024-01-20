@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import Loading from '../../components/loading';
 import BasicButton from '../../components/button/basic-button';
 import { signUpUser } from '../../api/user';
 import { Toaster } from 'react-hot-toast';

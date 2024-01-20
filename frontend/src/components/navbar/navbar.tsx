@@ -1,12 +1,10 @@
-import React, { useContext } from 'react'
-import { faUser } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../../context';
 import useLogOut from '../../hooks/useLogOut';
 
 function Navbar() {
-    const { isLoggedIn, user, setIsLoggedIn, updateUser } = useContext(UserContext);
+    const { isLoggedIn, user } = useContext(UserContext);
     const { logoutHandler } = useLogOut();
 
     return (
