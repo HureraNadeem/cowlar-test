@@ -9,7 +9,7 @@ import { UserContext } from '../../context';
 function LogIn() {
     const [submitLoading, setSubmitLoading] = useState<boolean>(false);
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors }} = useForm();
     const navigate = useNavigate();
 
     const { setIsLoggedIn, updateUser } = useContext(UserContext);
@@ -20,7 +20,7 @@ function LogIn() {
             const user = await loginUser(data.email, data.password);
             console.log(user);
             if (user) {
-                updateUser({...user.user, token: user.token });
+                updateUser({ ...user.user, token: user.token });
                 localStorage.setItem('COWLAR_TOKEN', user.token);
                 setIsLoggedIn(true);
                 setTimeout(() => { //delay for the toast to be readable
@@ -46,7 +46,7 @@ function LogIn() {
             >
                 <div className='w-full rounded-lg bg-white shadow sm:max-w-md md:mt-0 xl:p-0'>
                     <div className='space-y-4 p-6 sm:p-8 md:space-y-6'>
-                        <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl'>
+                        <h1 data-testid="login-heading" className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl'>
                             Log in
                         </h1>
                         <form
@@ -67,6 +67,7 @@ function LogIn() {
                                     placeholder='name@service.com'
                                     {...register('email', { required: 'Email is required' })}
                                 />
+                                {errors.email && <span className="text-sm text-red-500">{errors.email.message?.toString()}</span>}
                             </div>
                             <div>
                                 <label
@@ -84,6 +85,8 @@ function LogIn() {
                                         required: 'Password is required',
                                     })}
                                 />
+                                {errors.password && <span className="text-sm text-red-500">{errors.password.message?.toString()}</span>}
+
                             </div>
 
                             <div className='text-sm text-red-500'></div>
