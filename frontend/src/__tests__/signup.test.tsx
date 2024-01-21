@@ -101,13 +101,13 @@ describe('SignUp Component Unit and Functional Tests', () => {
             target: { value: 'Test User' },
         });
         fireEvent.change(screen.getByPlaceholderText('name@service.com'), {
-            target: { value: 'test2@gmail.com' },
+            target: { value: `jest${Math.floor(10000 + Math.random() * 90000)}@jest.com` },
         });
         fireEvent.change(screen.getByPlaceholderText('923121231234'), {
             target: { value: '923121231234' },
         });
         fireEvent.change(screen.getByPlaceholderText('••••••••'), {
-            target: { value: 'abcd.123' },
+            target: { value: 'jest.123' },
         });
         fireEvent.click(screen.getByRole('button', { name: 'Sign up' }));
         await waitFor(() => {

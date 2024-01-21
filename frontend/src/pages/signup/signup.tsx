@@ -43,7 +43,7 @@ function SignUp() {
             <div className="custom-bg-gradient flex min-h-screen items-center justify-center px-4" style={{ backgroundImage: "linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),url(https://assets.nflxext.com/ffe/siteui/vlv3/594f8025-139a-4a35-b58d-4ecf8fdc507c/c11340ec-4211-4482-a9a0-f0ccd4d9e940/PK-en-20240108-popsignuptwoweeks-perspective_alpha_website_small.jpg)" }}>
                 <div className="w-full rounded-lg bg-white shadow sm:max-w-md md:mt-0 xl:p-0">
                     <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
-                        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                        <h1  data-testid="signup-heading"  className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                             Sign up
                         </h1>
                         <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -121,7 +121,7 @@ function SignUp() {
 
                             <p className="text-sm font-light text-gray-500 ">
                                 Already have an account?{' '}
-                                <Link to="/signup" className="font-medium text-primaryRed hover:underline opacity-[0.9]">
+                                <Link to="/login" className="font-medium text-primaryRed hover:underline opacity-[0.9]">
                                     Log in
                                 </Link>
                             </p>
