@@ -87,35 +87,35 @@ describe('SignUp Component Unit and Functional Tests', () => {
         });
     });
 
-    // test('submits signup form with valid data', async () => {
-    //     await act(async () =>
-    //         render(
-    //             <UserContext.Provider value={mockContext}>
-    //                 <MemoryRouter>
-    //                     <SignUp />
-    //                 </MemoryRouter>
-    //             </UserContext.Provider>
-    //         )
-    //     );
-    //     fireEvent.change(screen.getByPlaceholderText('John Doe'), {
-    //         target: { value: 'Test User' },
-    //     });
-    //     fireEvent.change(screen.getByPlaceholderText('name@service.com'), {
-    //         target: { value: `jest${Math.floor(10000 + Math.random() * 90000)}@jest.com` },
-    //     });
-    //     fireEvent.change(screen.getByPlaceholderText('923121231234'), {
-    //         target: { value: '923121231234' },
-    //     });
-    //     fireEvent.change(screen.getByPlaceholderText('••••••••'), {
-    //         target: { value: 'jest.123' },
-    //     });
-    //     fireEvent.click(screen.getByRole('button', { name: 'Sign up' }));
-    //     await waitFor(() => {
-    //         setTimeout(() => {
-    //             expect(screen.getByText('All Movies')).toBeInTheDocument();
-    //         }, 2000);
-    //     });
-    // });
+    test('submits signup form with valid data', async () => {
+        await act(async () =>
+            render(
+                <UserContext.Provider value={mockContext}>
+                    <MemoryRouter>
+                        <SignUp />
+                    </MemoryRouter>
+                </UserContext.Provider>
+            )
+        );
+        fireEvent.change(screen.getByPlaceholderText('John Doe'), {
+            target: { value: 'Test User' },
+        });
+        fireEvent.change(screen.getByPlaceholderText('name@service.com'), {
+            target: { value: `jest${Math.floor(10000 + Math.random() * 90000)}@jest.com` },
+        });
+        fireEvent.change(screen.getByPlaceholderText('923121231234'), {
+            target: { value: '923121231234' },
+        });
+        fireEvent.change(screen.getByPlaceholderText('••••••••'), {
+            target: { value: 'jest.123' },
+        });
+        fireEvent.click(screen.getByRole('button', { name: 'Sign up' }));
+        await waitFor(() => {
+            setTimeout(() => {
+                expect(screen.getByText('All Movies')).toBeInTheDocument();
+            }, 2000);
+        });
+    });
 
     test('handles signup error on form submission', async () => {
         await act(async () =>

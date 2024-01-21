@@ -12,12 +12,6 @@ import { jest as jest_ } from '@jest/globals';
 import '@testing-library/jest-dom/extend-expect';
 import { IContext } from '../interfaces';
 
-// const mockUsedNavigate = jest_.fn();
-// jest_.mock('react-router-dom', () => ({
-//     ...jest.requireActual('react-router-dom'),
-//     useNavigate: () => mockUsedNavigate,
-// }));
-
 jest_.mock('../api/reviews', () => ({
     createReviews: jest_.fn(),
     editReview: jest_.fn(),
