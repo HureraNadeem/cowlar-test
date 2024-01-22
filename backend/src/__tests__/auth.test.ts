@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app';  // Assuming your app is exported as 'app'
+import app from '../app'; 
 
 describe('Authentication APIs', () => {
   let token: string;  // To store the authentication token

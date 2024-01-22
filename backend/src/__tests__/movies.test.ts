@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app'; 
+import app from '../app';
 
 describe('Movie APIs', () => {
     let userToken: string;
@@ -112,6 +112,19 @@ describe('Movie APIs', () => {
             expect(response.body).toHaveProperty('data');
             movie2 = response.body.data._id;
         });
+
+        it('should return 401 Unauthorized for creating a movie without a token', async () => {
+            const response = await request(app)
+                .post('/api/v1/movies')
+                .send({
+                    name: 'UnauthorizedMovie',
+                    description: 'Unauthorized movie creation test',
+                    releaseYear: "2023",
+                    genre: 'Drama',
+                });
+
+            expect(response.status).toBe(401);
+        });
     });
 
     describe('GET /api/v1/movies', () => {
@@ -159,6 +172,19 @@ describe('Movie APIs', () => {
     });
 
     describe('DELETE /api/v1/movies/:id', () => {
+
+        it('should return 401 Unauthorized for deleting a movie without a token', async () => {
+            const movies = await request(app)
+                .get('/api/v1/movies/own')
+                .set('Authorization', `Bearer ${userToken}`);
+
+            if (movies.body.data.length > 0) {
+                const response = await request(app)
+                    .delete(`/api/v1/movies/${movies.body.data[0]._id}`)
+                expect(response.status).toBe(401);
+            }
+        });
+
         it('should delete the first user\'s movie', async () => {
             const movies = await request(app)
                 .get('/api/v1/movies/own')
@@ -177,7 +203,6 @@ describe('Movie APIs', () => {
             const movies = await request(app)
                 .get('/api/v1/movies/own')
                 .set('Authorization', `Bearer ${userToken2}`);
-
 
             if (movies.body.data.length > 0) {
                 const response = await request(app)
