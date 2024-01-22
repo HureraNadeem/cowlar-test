@@ -45,6 +45,6 @@ describe('Home Component UI Tests', () => {
                 </UserContext.Provider>
             );
         });
-        expect(screen.getByText("Hi, you're in guest mode. Log In!")).toBeInTheDocument();
+        expect(screen.getByText("Hi, you're in guest mode!")).toBeInTheDocument();
     });
 });
