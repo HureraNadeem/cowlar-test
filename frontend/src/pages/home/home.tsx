@@ -11,7 +11,7 @@ import { getAllMovies } from '../../api/movies';
 import Loading from '../../components/loading';
 import { UserContext } from '../../context';
 import useAuthVerification from '../../hooks/useAuthentication';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Home() {
     const { register, handleSubmit } = useForm();
@@ -26,6 +26,8 @@ function Home() {
     const [isPageLoading, setIsPageLoading] = React.useState<boolean>(false);
     const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
     const [movies, setMovies] = React.useState([]);
+
+    const navigate = useNavigate();
 
     const openModal = () => {
         isLoggedIn ? setModalOpen(true) : toast("Wont work! You need to login first!", { icon: "🙂" })
@@ -109,13 +111,14 @@ function Home() {
                                     <FontAwesomeIcon icon={faPlus} className='pr-1' />
                                     Add Movie
                                 </button>
-                                <Link
-                                    to={"/own-movies"}
+                                <button
+                                    // to={isLoggedIn ?? "/own-movies"}
+                                    onClick={() => isLoggedIn ? navigate("/own-movies") : toast("Wont work! You need to login first!", { icon: "🙂" })}
                                     className='text-white bg-primaryRed hover:bg-secondaryRed hover:text-white font-medium rounded-lg text-sm px-4 py-2 text-center'
                                 >
                                     View own movies
                                     <FontAwesomeIcon icon={faArrowRight} className='pl-2' />
-                                </Link>
+                                </button>
                             </div>
                         </div>
                         <div className='py-5 flex items-end justify-center'>

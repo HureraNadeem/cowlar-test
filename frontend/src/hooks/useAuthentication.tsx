@@ -25,6 +25,8 @@ const useAuthVerification = (isRedirectionAllowed = false) => {
                 }
                 else {
                     localStorage.removeItem('COWLAR_TOKEN');
+                    updateUser(null);
+                    setIsLoggedIn(false);
                     toast("Looks like your session is exired. Please log in again!", {
                         icon: '💤', duration: 4000
                     });

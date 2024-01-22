@@ -1,23 +1,22 @@
 import React, { useContext } from 'react'
 import RootLayout from '../../Layout/RootLayout'
 import ContainerLayout from '../../Layout/ContainerLayout'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom'
 import toast, { Toaster } from 'react-hot-toast'
 import Loading from '../../components/loading'
-import { getMovie, getOwnMovies } from '../../api/movies'
-import { getReviews } from '../../api/reviews'
+import { getOwnMovies } from '../../api/movies'
 import { UserContext } from '../../context'
 import useAuthVerification from '../../hooks/useAuthentication'
 import OwnMovieCard from '../../components/own-movie-card'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 
 const OwnMovies = () => {
 
   const { pageLoading: pageLoadingFromVerificationHook } =
     useAuthVerification(true);
 
-  const { isLoggedIn, user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const [movie, setMovie] = React.useState([]);
 
@@ -76,13 +75,20 @@ const OwnMovies = () => {
         <ContainerLayout>
 
           <div className='flex flex-col'>
-            <div className='flex justify-between'>
+            <div className='flex justify-center flex-wrap gap-3 sm:justify-between'>
               <h2 className='capitalize text-2xl font-bold md:text-3xl'>
                 Your Movies
               </h2>
-
+              <div className='flex gap-4'>
+                <Link
+                  to={"/"}
+                  className='text-white bg-primaryRed hover:bg-secondaryRed hover:text-white font-medium rounded-lg text-sm px-4 py-2 text-center'
+                >
+                  Go back
+                  <FontAwesomeIcon icon={faArrowRight} className='pl-2' />
+                </Link>
+              </div>
             </div>
-
             <main className='mx-auto max-w-7xl px-5 my-12'>
               <div className='grid grid-cols-1ta gap-x-5 gap-y-10 md:grid-cols-2 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4 lg:gap-x-7 lg:gap-y-14'>
                 {

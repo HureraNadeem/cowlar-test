@@ -45,7 +45,7 @@ function LogIn() {
             toast('You are already logged in! Log out first!', {icon: "🧐"})
             navigate('/');
         }
-    }, [isLoggedIn])
+    }, [])
 
     if (pageLoading) {
         return (
