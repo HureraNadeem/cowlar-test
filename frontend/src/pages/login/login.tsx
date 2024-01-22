@@ -72,9 +72,9 @@ function LogIn() {
                             'linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%),url(https://assets.nflxext.com/ffe/siteui/vlv3/594f8025-139a-4a35-b58d-4ecf8fdc507c/c11340ec-4211-4482-a9a0-f0ccd4d9e940/PK-en-20240108-popsignuptwoweeks-perspective_alpha_website_small.jpg)',
                     }}
                 >
-                    <div className='w-full rounded-lg bg-white shadow sm:max-w-md md:mt-0 xl:p-0'>
+                    <div className='w-full rounded-lg bg-backgroundBlack shadow sm:max-w-md md:mt-0 xl:p-0'>
                         <div className='space-y-4 p-6 sm:p-8 md:space-y-6'>
-                            <h1 data-testid="login-heading" className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl'>
+                            <h1 data-testid="login-heading" className='text-xl font-bold leading-tight tracking-tight  md:text-2xl'>
                                 Log in
                             </h1>
                             <form
@@ -84,14 +84,14 @@ function LogIn() {
                                 <div>
                                     <label
                                         htmlFor='email'
-                                        className='mb-2 block text-sm font-medium text-gray-900 '
+                                        className='mb-2 block text-sm font-medium  '
                                     >
                                         Email
                                     </label>
                                     <input
                                         type='email'
                                         id='email'
-                                        className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 sm:text-sm'
+                                        className='block w-full rounded-lg border border-gray-300 bg-[#292929] p-2.5  focus:border-primary-600 focus:ring-primary-600 sm:text-sm'
                                         placeholder='name@service.com'
                                         {...register('email', { required: 'Email is required' })}
                                     />
@@ -100,7 +100,7 @@ function LogIn() {
                                 <div>
                                     <label
                                         htmlFor='password'
-                                        className='mb-2 block text-sm font-medium text-gray-900 '
+                                        className='mb-2 block text-sm font-medium  '
                                     >
                                         Password
                                     </label>
@@ -108,7 +108,7 @@ function LogIn() {
                                         type='password'
                                         id='password'
                                         placeholder='••••••••'
-                                        className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 sm:text-sm'
+                                        className='block w-full rounded-lg border border-gray-300 bg-[#292929] p-2.5  focus:border-primary-600 focus:ring-primary-600 sm:text-sm'
                                         {...register('password', {
                                             required: 'Password is required',
                                         })}
