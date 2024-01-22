@@ -11,7 +11,7 @@ import { getAllMovies } from '../../api/movies';
 import Loading from '../../components/loading';
 import { UserContext } from '../../context';
 import useAuthVerification from '../../hooks/useAuthentication';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
     const { register, handleSubmit } = useForm();
