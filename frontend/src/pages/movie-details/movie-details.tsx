@@ -132,6 +132,7 @@ function MovieDetails() {
                     name={movie.name}
                     genre={movie.genre}
                     releaseYear={movie.releaseYear}
+                    videoUrl={movie.videoUrl}
                 />
 
                 <ContainerLayout>
