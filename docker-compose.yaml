@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: cowlar-frontend
+    ports:
+      - 5173:5173
+    depends_on:
+      - backend
+    environment:
+      - API_URL=http://localhost:5000/api/v1
+    networks:
+      - cowlar-test
+
+  backend:
+    build: ./backend
+    container_name: cowlar-backend
+    restart: always
+    ports:
+      - 5000:5000
+    environment:
+      - PORT_NUMBER_DEV=5000
+      - MONGODB_CONNECTION_STRING_URL=mongodb+srv://hurera:cowlar.123@movie-web-app.2lh5yvz.mongodb.net/movie-app?retryWrites=true&w=majority
+      - MONGODB_URL_USERNAME=hurera
+      - MONGODB_URL_PASSWORD=cowlar.123
+      - JWT_SECRET=cowlartest
+      - JWT_EXPIRES_IN=30m
+      - FRONTEND_URL=http://127.0.0.1:3000
+    networks:
+      - cowlar-test
+
+networks:
+  cowlar-test:
+    driver: bridge

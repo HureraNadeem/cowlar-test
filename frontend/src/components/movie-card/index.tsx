@@ -20,7 +20,7 @@ export const MovieCard: FC<MovieCardProps> = ({ title, imgUrl, releaseYear, genr
                 <img src={imgUrl} alt={title} className='aspect-[2/3] w-[100%] h-[100%]' />
                 <Link
                     to={`/movies/${id}`}
-                    className='absolute inset-0 z-10 md:hidden'
+                    className='absolute inset-0 md:hidden'
                 />
                 <div className='absolute inset-0 bg-black/70 none flex-col items-center justify-center gap-4 text-sm font-bold opacity-0 group-hover:opacity-100 duration-300 text-center hidden md:flex'>
                     <Link

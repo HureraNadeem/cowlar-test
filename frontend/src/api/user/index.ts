@@ -6,6 +6,12 @@ export const loginUser = async (email: string, password: string) => {
         const res = await axios.post('/auth/login', {
             email,
             password,
+        }, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type'
+            },
         });
         if (res.status === 200 || res.data.message === "success") {
             toast.success('Successfully logged in, redirecting you!', { duration: 1500, className: 'text-center' });

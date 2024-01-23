@@ -74,7 +74,7 @@ const MovieModal: FC<Props> = ({ isOpen, onClose, onSubmit }) => {
     return (
         <>
             {isOpen && (
-                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-backgroundBlack bg-opacity-50">
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-backgroundBlack bg-opacity-50 z-10">
                     <div className="bg-[#292929] p-8 rounded shadow-md w-full max-w-md border-gray-600 border" >
                         <div className='w-full flex justify-end'>
                             <button
