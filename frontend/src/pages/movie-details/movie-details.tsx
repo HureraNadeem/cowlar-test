@@ -51,8 +51,6 @@ function MovieDetails() {
     const [allReviews, setAllReviews] = React.useState([]);
     const [reFetchReview, setReFetchReview] = React.useState(1);
 
-    console.log(reFetchReview);
-
     const openModal = () => {
         setModalOpen(true);
     };

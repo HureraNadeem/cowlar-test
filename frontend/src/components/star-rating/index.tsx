@@ -8,7 +8,6 @@ type Iprops = {
     changeAble?: boolean;
 }
 const StarRating: FC<Iprops> = ({ initialRating = 1, onChange, changeAble = true }) => {
-    console.log(initialRating);
     const [rating, setRating] = useState(initialRating);
 
     const handleClick = (selectedRating: React.SetStateAction<number>) => {

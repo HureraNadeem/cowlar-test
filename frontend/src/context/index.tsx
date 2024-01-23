@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import { IUser, IContext } from '../interfaces';
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -12,11 +12,11 @@ const UserProvider = ({ children }: { children: React.ReactNode }) => {
     setUser(() => userData);
   };
 
-  useEffect(() => {
-    console.log(user);
-    console.log("from context -> isLoggedIn: ", isLoggedIn);
-    console.log(localStorage.getItem("COWLAR_TOKEN"));
-  }, [user, isLoggedIn]);
+  // useEffect(() => {
+  //   console.log(user);
+  //   console.log("from context -> isLoggedIn: ", isLoggedIn);
+  //   console.log(localStorage.getItem("COWLAR_TOKEN"));
+  // }, [user, isLoggedIn]);
 
   const contextValue = {
     user,

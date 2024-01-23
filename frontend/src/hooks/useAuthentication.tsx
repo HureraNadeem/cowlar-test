@@ -16,7 +16,6 @@ const useAuthVerification = (isRedirectionAllowed = false) => {
         console.log('useAuthVerification.tsx');
         const verifyUser_ = async () => {
             const token = localStorage.getItem('COWLAR_TOKEN');
-            console.log(token);
             if (token) {
                 const user = await verifyUser(token);
                 if (user) {

@@ -25,7 +25,6 @@ function SignUp() {
         setSubmitLoading(true);
         try {
             const user = await signUpUser(data.email, data.password, data.fullName, data.phoneNumber);
-            console.log(user);
             if (user) {
                 updateUser({ ...user.user, token: user.token });
                 localStorage.setItem('COWLAR_TOKEN', user.token);

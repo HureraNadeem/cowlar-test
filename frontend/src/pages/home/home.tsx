@@ -16,12 +16,9 @@ import { useNavigate } from 'react-router-dom';
 function Home() {
     const { register, handleSubmit } = useForm();
 
-    const { isLoggedIn, user } = useContext(UserContext);
+    const { isLoggedIn } = useContext(UserContext);
 
     const { pageLoading } = useAuthVerification();
-
-    console.log("home->isLoggedIn->", isLoggedIn);
-    console.log("home->user->", user);
 
     const [isPageLoading, setIsPageLoading] = React.useState<boolean>(false);
     const [isModalOpen, setModalOpen] = React.useState<boolean>(false);
@@ -54,7 +51,6 @@ function Home() {
             try {
                 setIsPageLoading(true);
                 const { data } = await getAllMovies("") as any;
-                console.log("from use effect: ", data);
                 setMovies(data)
                 setIsPageLoading(false);
             } catch (error) {
@@ -170,7 +166,7 @@ function Home() {
                                 {
                                     movies?.map((e: any) => {
                                         return (
-                                            < MovieCard id={e._id} title={e.name} imgUrl={e.imgUrl} releaseYear={e.releaseYear} genre={e.genre} />
+                                            < MovieCard id={e._id} title={e.name} imgUrl={e.imgUrl} releaseYear={e.releaseYear} genre={e.genre} averageRating={e.averageRating} reviewCount={e.reviewCount}/>
                                         )
                                     })
                                 }

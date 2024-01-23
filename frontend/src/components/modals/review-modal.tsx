@@ -28,7 +28,6 @@ interface Inputs {
 
 const ReviewModal: FC<Props> = ({ isOpen, onClose, movieId, setReFetchReview, existingData }) => {
 
-    console.log(existingData);
     const [stars, setStars] = useState<number>(existingData ? existingData?.ratingStars : 1);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm<Inputs>({
@@ -44,7 +43,6 @@ const ReviewModal: FC<Props> = ({ isOpen, onClose, movieId, setReFetchReview, ex
 
     const onFormSubmit: SubmitHandler<Inputs> = async (data: any) => {
         let newDataObj = { comment: data.comment, ratingStars: stars }
-        console.log("newDataObj", newDataObj);
         setSubmitLoading(true);
         let newReview;
         try {

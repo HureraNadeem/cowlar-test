@@ -7,9 +7,11 @@ type MovieCardProps = {
     releaseYear: string;
     genre: string;
     id: string;
+    averageRating: number;
+    reviewCount: number;
 };
 
-export const MovieCard: FC<MovieCardProps> = ({ title, imgUrl, releaseYear, genre, id }) => {
+export const MovieCard: FC<MovieCardProps> = ({ title, imgUrl, releaseYear, genre, id, averageRating, reviewCount }) => {
 
     const staticQuality = 'HD';
     const staticLang = 'English';
@@ -53,10 +55,20 @@ export const MovieCard: FC<MovieCardProps> = ({ title, imgUrl, releaseYear, genr
                                 </span>
                             </div>
                             <span className='text-white flex items-center gap-2 truncate'>
-                                {genre}
+                                {`${genre.charAt(0).toUpperCase() + genre.slice(1)}`}
                             </span>
                         </div>
                     )}
+                    <div className='flex flex-col gap-1.5 justify-between text-xs md:items-center md:flex-row'>
+                        <div className='flex items-center gap-2'>
+                            <span className=' px-2 py-1'>
+                                <strong className='text-white'>Rating: {averageRating.toPrecision(2).toString()}/5</strong>
+                            </span>
+                            <span className=' px-2 py-1'>
+                                <strong className='text-white'>Total Reviews: {reviewCount.toString()}</strong>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
